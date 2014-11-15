@@ -5,7 +5,7 @@
   "minimum_chrome_version": "31",
   "app": {
     "background": {
-      "scripts": ["background.js"]
+      "scripts": ["tcp-server.js", "commands/BrowserCommands.js", "background.js"]
     }
   },
   "permissions": [
@@ -13,10 +13,18 @@
     "storage"
   ],
   "file_handlers": {
-    "text": {
-      "types": [
-          "text/*"
-      ]
+    "mp3": {
+        "types": [
+            "audio/mpeg3",
+            "audio/x-mpeg-3",
+            "video/mpeg",
+            "video/x-mpeg",
+            "audio/mpeg"
+        ],
+        "extensions": [
+            "mp3"
+        ],
+        "title": "LocalMusicCast"
     }
   }
 }
