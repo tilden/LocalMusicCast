@@ -5,12 +5,16 @@
   "minimum_chrome_version": "31",
   "app": {
     "background": {
-      "scripts": ["tcp-server.js", "commands/BrowserCommands.js", "background.js"]
+      "scripts": ["tcp-server.js", 
+                  "commands/BrowserCommands.js", 
+                  "main_background.js"]
     }
   },
   "permissions": [
     {"fileSystem": ["write", "retainEntries", "directory"]},
-    "storage"
+    "storage", 
+    "webview", 
+    "system.network"
   ],
   "file_handlers": {
     "mp3": {
@@ -25,6 +29,11 @@
             "mp3"
         ],
         "title": "LocalMusicCast"
+    }
+  }, 
+  "sockets": {
+    "tcpServer": {
+      "listen": ""
     }
   }
 }

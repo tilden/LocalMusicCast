@@ -75,21 +75,35 @@ output {
 </head>
 <body>
 
-<nav>
-  <button id="choose_file">Choose File</button>
-  <button id="choose_dir">Choose Directory</button>
-</nav>
+    <section id='filepicker'>
+        <h1>File Picker</h1>
+        <nav>
+            <button id="choose_file">Choose File</button>
+            <button id="choose_dir">Choose Directory</button>
+        </nav>
+        Path: <input type="text" id="file_path" readonly>
+        <span>Size: <span id="file_size"></span> bytes</span>
+        <output></output>
+        <textarea></textarea>
+        <p><button id="save_file" disabled>Save As</button></p>
+    </section>
+    
+    <section id="server">
+        <h1>Chrome Remote Commando</h1>
+        <div class="hide-when-connected">Serve at 
+            <select id="addresses"><option>127.0.0.1</option></select>:
+            <input type="number" id="serverPort" value="8888"></input>
+            <button id="serverStart">Start!</button>
+        </div>
+        <div class="hide-when-not-connected">
+            <p>Serving at <span class="serving-at"></span>
+            <button id="serverStop">Stop!</button></p>
+            <div id="serverlog"></div>
+        </div>
+    </section>
 
-Path: <input type="text" id="file_path" readonly>
-<span>Size: <span id="file_size"></span> bytes</span>
-
-<output></output>
-
-<textarea></textarea>
-
-<p><button id="save_file" disabled>Save As</button></p>
-
-<script src="js/dnd.js"></script>
-<script src="js/app.js"></script>
+    <script src="js/dnd.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/server.js"></script>
 </body>
 </html>
