@@ -3,37 +3,83 @@
   "version": "1.0",
   "manifest_version": 2,
   "minimum_chrome_version": "31",
+  "background": {
+	 "persistent": true,
+	 "page": "player.html"
+  },
   "app": {
     "background": {
-      "scripts": ["tcp-server.js", 
-                  "commands/BrowserCommands.js", 
-                  "main_background.js"]
+      "scripts": [
+        "server_js/underscore.js",
+        "server_js/common.js",
+        "server_js/mime.js",
+        "server_js/buffer.js",
+        "server_js/request.js",
+        "server_js/stream.js",
+        "server_js/connection.js",
+        "server_js/webapp.js",
+        "server_js/handlers.js",
+        "server_js/httplib.js",
+        "server_js/background.js"
+      ]
+    },
+    "launch": {
+        "web_url": "client/index.html"
     }
   },
   "permissions": [
-    {"fileSystem": ["write", "retainEntries", "directory"]},
-    "storage", 
-    "webview", 
+    {
+      "fileSystem": [
+        "write",
+        "retainEntries",
+        "directory"
+      ]
+    },
+    "storage",
+    "notifications",
+    "app.window",
+    {
+      "socket": [
+        "tcp-connect",
+        "tcp-listen"
+      ]
+    },
+    "webview",
     "system.network"
   ],
   "file_handlers": {
     "mp3": {
-        "types": [
-            "audio/mpeg3",
-            "audio/x-mpeg-3",
-            "video/mpeg",
-            "video/x-mpeg",
-            "audio/mpeg"
-        ],
-        "extensions": [
-            "mp3"
-        ],
-        "title": "LocalMusicCast"
+      "types": [
+        "audio/mpeg3",
+        "audio/x-mpeg-3",
+        "video/mpeg",
+        "video/x-mpeg",
+        "audio/mpeg"
+      ],
+      "extensions": [
+        "mp3"
+      ],
+      "title": "LocalMusicCast"
     }
-  }, 
+  },
   "sockets": {
+    "udp": {
+      "send": [
+        ""
+      ],
+      "bind": [
+        ""
+      ]
+    },
+    "tcp": {
+      "connect": [
+        ""
+      ]
+    },
     "tcpServer": {
-      "listen": ""
+      "listen": [
+        "127.0.0.1:*"
+      ]
     }
   }
 }

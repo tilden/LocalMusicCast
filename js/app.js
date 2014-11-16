@@ -115,6 +115,7 @@ function loadFileEntry(_chosenEntry) {
   chosenEntry.file(function(file) {
     readAsText(chosenEntry, function(result) {
       textarea.value = result;
+      //console.log(result);
     });
     // Update display.
     saveFileButton.disabled = false; // allow the user to save the content
@@ -176,8 +177,8 @@ function loadInitialFile(launchData) {
 
 chooseFileButton.addEventListener('click', function(e) {
   var accepts = [{
-    mimeTypes: ['text/*'],
-    extensions: ['js', 'css', 'txt', 'html', 'xml', 'tsv', 'csv', 'rtf']
+    mimeTypes: ['audio/mpeg'],
+    extensions: ['mp3']
   }];
   chrome.fileSystem.chooseEntry({type: 'openFile', accepts: accepts}, function(theEntry) {
     if (!theEntry) {
@@ -218,7 +219,7 @@ var dnd = new DnDFileController('body', function(data) {
   for (var i = 0; i < data.items.length; i++) {
     var item = data.items[i];
     if (item.kind == 'file' &&
-        item.type.match('text/*') &&
+        item.type.match('audio/mpeg') &&
         item.webkitGetAsEntry()) {
       chosenEntry = item.webkitGetAsEntry();
       break;
@@ -226,7 +227,7 @@ var dnd = new DnDFileController('body', function(data) {
   };
 
   if (!chosenEntry) {
-    output.textContent = "Sorry. That's not a text file.";
+    output.textContent = "Sorry. That's not an mp3 file.";
     return;
   } 
   else {
@@ -241,4 +242,4 @@ var dnd = new DnDFileController('body', function(data) {
   displayEntryData(chosenEntry);
 });
 
-loadInitialFile(launchData);
+//loadInitialFile(launchData);
