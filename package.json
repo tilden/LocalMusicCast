@@ -1,0 +1,36 @@
+{
+  "name": "local-music-caster",
+  "version": "0.0.0",
+  "description": "Stream your mp3s to your Chromecast",
+  "preferGlobal": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+	"bin": {
+    "chromecast": "./bin/chromecast.js"
+  },
+  "os": [
+    "darwin"
+  ],
+  "author": "me",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fardog/node-chromecast-osx-audio.git"
+  },
+  "keywords": [
+    "audio",
+    "sound",
+    "streaming",
+    "osx",
+    "chromecast"
+  ],
+  "dependencies": {
+    "castv2-client": "0.0.2",
+    "chalk": "^0.5.1",
+    "mdns": "^2.2.0",
+    "minimist": "^1.1.0",
+    "ip": "^0.3.2"
+  }
+}
